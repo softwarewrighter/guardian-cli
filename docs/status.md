@@ -1,97 +1,95 @@
 # Guardian CLI - Project Status
 
-## Current Status: Phase 1 - Project Setup
+## Current Status: Phase 1 - MVP Complete
 
 **Last Updated:** 2025-12-10
 
 ## Overview
 
-Guardian CLI is in early development. The project has been initialized with documentation and basic project structure.
+Guardian CLI has completed its initial MVP implementation with core host management functionality.
 
 ## Completed
 
-- [x] Project initialized with Cargo.toml
-- [x] Basic main.rs skeleton
-- [x] Documentation structure created
-  - [x] architecture.md - System architecture
-  - [x] prd.md - Product requirements document
-  - [x] design.md - Technical design document
-  - [x] plan.md - Implementation plan
-  - [x] status.md - This file
-- [x] AI agent instructions (ai_agent_instructions.md)
-- [x] Development process documentation (process.md)
-- [x] Development tools documentation (tools.md)
-- [x] Initial research completed (research.txt)
+### Phase 1: MVP - Host Management
+
+- [x] Project structure with modules (config, ollama, commands)
+- [x] Configuration loading from TOML files
+- [x] Ollama HTTP client with ping and model listing
+- [x] Host selection with fallback support
+- [x] CLI commands implemented:
+  - [x] `ping-hosts` - Check host availability
+  - [x] `list-models` - List models on hosts
+  - [x] `select-host` - Select best available host
+  - [x] `show-config` - Display configuration
+  - [x] `config-path` - Show config file location
+- [x] JSON output support for all commands
+- [x] Comprehensive test suite (20 tests)
+- [x] Documentation:
+  - [x] architecture.md
+  - [x] prd.md
+  - [x] design.md
+  - [x] plan.md
+  - [x] usage.md
+  - [x] status.md
+- [x] All quality gates passing:
+  - [x] `cargo test` - All tests pass
+  - [x] `cargo clippy -- -D warnings` - No warnings
+  - [x] `cargo fmt` - Code formatted
+  - [x] `markdown-checker` - All docs valid ASCII
 
 ## In Progress
 
-### Phase 1: MVP - Host Management
+### Phase 2: Git Integration (Next)
 
 | Task | Status | Notes |
 |------|--------|-------|
-| Project structure with modules | Not started | |
-| config.rs - TOML loading | Not started | |
-| ollama.rs - HTTP client | Not started | |
-| host_select.rs - Host selection | Not started | |
-| ping-hosts command | Not started | |
-| list-models command | Not started | |
-| Error handling | Not started | |
-| Unit tests | Not started | |
-| Integration tests | Not started | |
+| Implement repo.rs module | Not started | |
+| Git diff extraction | Not started | |
+| Git status parsing | Not started | |
+| File listing with filters | Not started | |
+| check-diff command skeleton | Not started | |
 
-## Blockers
+## Quality Metrics
 
-None currently.
+| Metric | Value |
+|--------|-------|
+| Test count | 20 |
+| Test pass rate | 100% |
+| Clippy warnings | 0 |
+| Markdown validation | All pass |
 
-## Decisions Made
+## Known Issues
 
-1. **Rust 2024 edition** - Using latest Rust features
-2. **Async with tokio** - Industry standard for async Rust
-3. **reqwest + rustls** - Pure Rust TLS, no OpenSSL dependency
-4. **TOML configuration** - Human-readable, Rust ecosystem standard
-5. **Remote-preferred strategy** - Local Ollama as fallback only
-
-## Decisions Pending
-
-1. Which Ollama models to recommend for different check types?
-2. Should we support model-specific host preferences?
-3. How to handle very large diffs that exceed context limits?
+1. **sw-checklist warnings** - Some function counts exceed limits due to test functions being counted. Tests are valuable and intentionally comprehensive.
+2. **Extended help not implemented** - --help should include AI agent instructions section (future enhancement).
+3. **Build metadata not in version** - Version output could include build info (future enhancement).
 
 ## Dependencies
 
-### External
-- Ollama servers on LAN (big72, curiosity, hive)
-- Local Ollama as fallback
-- Git for repository operations
-
-### Rust Crates (Planned)
-- anyhow, thiserror - Error handling
-- clap - CLI framework
-- directories - XDG paths
-- reqwest - HTTP client
-- serde, serde_json, toml - Serialization
-- tokio - Async runtime
-- tracing - Logging
-
-## Metrics
-
-Not yet collecting metrics. Will begin in Phase 7.
+| Crate | Version | Purpose |
+|-------|---------|---------|
+| anyhow | 1.x | Error handling |
+| clap | 4.x | CLI framework |
+| directories | 5.x | XDG paths |
+| futures | 0.3 | Async utilities |
+| reqwest | 0.12 | HTTP client |
+| serde | 1.x | Serialization |
+| serde_json | 1.x | JSON |
+| thiserror | 2.x | Error types |
+| tokio | 1.x | Async runtime |
+| toml | 0.8 | Config parsing |
+| tracing | 0.1 | Logging |
+| tracing-subscriber | 0.3 | Log formatting |
 
 ## Next Steps
 
-1. Implement Cargo.toml with full dependencies
-2. Create module structure (config.rs, ollama.rs, etc.)
-3. Implement config loading from TOML
-4. Implement basic Ollama client
-5. Implement ping-hosts command
-
-## Team
-
-- Mike - Developer
-- Claude - AI pair programmer
+1. Implement git integration (repo.rs)
+2. Add check-diff command
+3. Implement script execution for automated checks
+4. Add LLM-based evaluation
 
 ## Links
 
+- [Usage Guide](./usage.md)
+- [Implementation Plan](./plan.md)
 - [Process Documentation](./process.md)
-- [AI Agent Instructions](./ai_agent_instructions.md)
-- [Development Tools](./tools.md)

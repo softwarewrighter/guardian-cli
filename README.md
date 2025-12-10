@@ -68,6 +68,7 @@ fallback = true
 
 ## Documentation
 
+- [Usage Guide](docs/usage.md) - Comprehensive usage instructions and examples
 - [Architecture](docs/architecture.md) - System architecture and component design
 - [PRD](docs/prd.md) - Product requirements document
 - [Design](docs/design.md) - Technical design and API details
